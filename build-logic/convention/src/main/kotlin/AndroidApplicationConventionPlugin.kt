@@ -21,6 +21,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     versionCode =  libs.findVersion("versionCode").get().toString().toInt()
                     versionName =  libs.findVersion("versionName").get().toString()
                   }
+                buildFeatures.buildConfig = true
             }
 
         }

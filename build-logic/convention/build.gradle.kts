@@ -39,5 +39,9 @@ gradlePlugin {
             id = "movie.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidTest") {
+            id = "movie.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }

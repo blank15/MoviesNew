@@ -14,7 +14,6 @@
  *   limitations under the License.
  */
 
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.blank.wallpaper.configureKotlinAndroid
 import com.blank.wallpaper.libs
@@ -23,9 +22,17 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
+        val apikeyPropertiesFile = File(target.rootProject.projectDir, "apikey.properties")
+        val apikeyProperties = Properties()
+
+        apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
+
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
@@ -34,7 +41,13 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
+
+                defaultConfig.apply {
+                    targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
+                    buildConfigField("String", "BASE_URL", apikeyProperties.getProperty("BASE_URL"))
+                    buildConfigField("String", "TOKEN", apikeyProperties.getProperty("TOKEN"))
+                }
+                buildFeatures.buildConfig = true
             }
             dependencies {
                 add("androidTestImplementation", kotlin("test"))
