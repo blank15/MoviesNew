@@ -11,6 +11,10 @@ sealed class DomainResource<out Data> {
     ) : DomainResource<Nothing>()
 
     data class Error(
-        var error: Exception
+        var error: Exception?,
+        var message: String
     ) : DomainResource<Nothing>()
+
+
+    data object Loading : DomainResource<Nothing>()
 }

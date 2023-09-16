@@ -14,7 +14,6 @@ interface MovieApi {
 
     @GET("discover/movie?language=en-US")
     suspend fun getListMovie(
-        @Query("with_genres") genreId: String,
         @Query("page") page: Int
     ): NetworkResponse<MoviesResponse, ErrorResponse>
 

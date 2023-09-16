@@ -1,6 +1,7 @@
 plugins {
     id("movie.android.library")
     id("movie.android.hilt")
+    id("kotlinx-serialization")
 }
 
 android {

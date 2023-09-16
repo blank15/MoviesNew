@@ -11,12 +11,14 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("movie.android.library")
                 apply("movie.android.hilt")
+                apply("org.jetbrains.kotlin.kapt")
             }
 
 
             dependencies {
                 add("implementation", project(":domain"))
-
+                add("implementation", libs.findLibrary("glide.android").get())
+                add("kapt", libs.findLibrary("glide.compiler").get())
                 add("testImplementation", kotlin("test"))
                 add("androidTestImplementation", kotlin("test"))
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())

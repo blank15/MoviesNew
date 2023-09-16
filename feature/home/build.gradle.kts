@@ -4,6 +4,7 @@ plugins {
 }
 android {
     namespace = "com.blank.movie.home"
+    buildFeatures.dataBinding = true
 }
 
 dependencies {

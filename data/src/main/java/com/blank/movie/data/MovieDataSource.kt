@@ -10,7 +10,6 @@ import com.blank.movie.data.model.VideoResponse
 interface MovieDataSource {
 
     suspend fun getMovieList(
-        genreId: String,
         page: Int
     ): NetworkResponse<MoviesResponse, ErrorResponse>
 

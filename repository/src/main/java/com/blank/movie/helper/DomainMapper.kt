@@ -1,4 +1,4 @@
-package com.blank.movie.domain.helper
+package com.blank.movie.helper
 
 /**
  * Abstraction form mapper

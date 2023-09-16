@@ -23,6 +23,8 @@ okhttp = "4.10.0"
 ksp = "1.9.0-1.0.13"
 org-jetbrains-kotlin-jvm = "1.9.0"
 navigation = "2.6.0"
+paging = "3.1.1"
+glide = "4.14.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -51,7 +53,12 @@ retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "re
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+android-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+android-paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
+android-paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging" }
 
+glide-android = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
@@ -60,10 +67,17 @@ com-android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "org-jetbrains-kotlin-android" }
+
 [bundles]
 network = [
     "okhttp-logging",
     "retrofit-core",
     "retrofit-kotlin-serialization"
+]
+paging = [
+    "android-paging-runtime",
+    "android-paging-runtime-ktx",
+    "android-paging-common-ktx"
 ]
 

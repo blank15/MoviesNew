@@ -18,10 +18,14 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureKotlinAndroid(this)
                 defaultConfig.apply {
                     targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
-                    versionCode =  libs.findVersion("versionCode").get().toString().toInt()
-                    versionName =  libs.findVersion("versionName").get().toString()
-                  }
-                buildFeatures.buildConfig = true
+                    versionCode = libs.findVersion("versionCode").get().toString().toInt()
+                    versionName = libs.findVersion("versionName").get().toString()
+                }
+                buildFeatures.apply {
+                    buildConfig = true
+                    dataBinding = true
+                }
+
             }
 
         }

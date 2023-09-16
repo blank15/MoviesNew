@@ -7,14 +7,16 @@ import com.blank.movie.data.model.NetworkResponse
 import com.blank.movie.data.model.ResultMovieResponse
 import com.blank.movie.data.model.ReviewResponse
 import com.blank.movie.data.model.VideoResponse
+import javax.inject.Inject
 
-class MovieDataSourceImpl(
+class MovieDataSourceImpl @Inject constructor(
     private val movieApi: MovieApi
 ) : MovieDataSource {
     override suspend fun getMovieList(
-        genreId: String,
         page: Int
-    ): NetworkResponse<MoviesResponse, ErrorResponse> = movieApi.getListMovie(genreId, page)
+    ): NetworkResponse<MoviesResponse, ErrorResponse> {
+        return movieApi.getListMovie(page)
+    }
 
     override suspend fun getDetailMovie(idMovie: String): NetworkResponse<ResultMovieResponse, ErrorResponse> =
         movieApi.getDetailMovie(idMovie)

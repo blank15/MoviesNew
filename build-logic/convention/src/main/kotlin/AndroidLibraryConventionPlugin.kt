@@ -50,6 +50,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 buildFeatures.buildConfig = true
             }
             dependencies {
+                add("implementation", libs.findBundle("paging").get())
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
             }

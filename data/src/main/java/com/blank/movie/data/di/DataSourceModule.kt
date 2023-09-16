@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DataSourceModule {
+interface DataSourceModule {
     @Binds
-    abstract fun bindMovieDataSource(movieDataSourceImpl: MovieDataSourceImpl): MovieDataSource
+    fun bindMovieDataSource(movieDataSourceImpl: MovieDataSourceImpl): MovieDataSource
 }

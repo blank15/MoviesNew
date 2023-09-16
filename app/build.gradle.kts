@@ -29,6 +29,8 @@ dependencies {
 
     implementation(project(":feature:home"))
     implementation(project(":data"))
+    implementation(project(":repository"))
+    implementation(project(":domain"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

@@ -5,13 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResultMovieResponse(
-    val id: Int,
-    val originalName: String?,
-    val overview: String,
-    val popularity: Double,
-    val posterPath: String,
-    val backdropPath: String,
-    val releaseDate: String?,
-    val title: String?
+    val id: Int? = null,
+    val original_title: String? = null,
+    val overview: String? = null,
+    val popularity: Double? = null,
+    val poster_path: String? = null,
+    val backdropPath: String? = null,
+    val release_date: String? = null,
+    val title: String? = null
 
 )

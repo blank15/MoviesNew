@@ -36,10 +36,13 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
+        val json = Json {
+            ignoreUnknownKeys = true
+        }
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .client(okHttpClient)
             .build()
     }
