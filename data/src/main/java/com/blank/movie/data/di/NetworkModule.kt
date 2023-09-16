@@ -38,6 +38,7 @@ object NetworkModule {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .addConverterFactory(Json.asConverterFactory(contentType))
             .client(okHttpClient)
             .build()

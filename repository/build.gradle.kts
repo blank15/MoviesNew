@@ -4,11 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.blank.movie.data"
+    namespace = "com.blank.movie.repository"
 }
 
 dependencies {
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.bundles.network)
     implementation(libs.kotlinx.serialization.json)
+    implementation(project(":data"))
+    implementation(project(":domain"))
 }
