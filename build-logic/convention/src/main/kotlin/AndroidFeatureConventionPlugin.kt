@@ -22,7 +22,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("testImplementation", kotlin("test"))
                 add("androidTestImplementation", kotlin("test"))
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
-
+                add("testImplementation", libs.findBundle("mockk").get())
+                add("testImplementation", libs.findLibrary("arch.core.testing").get())
             }
         }
     }

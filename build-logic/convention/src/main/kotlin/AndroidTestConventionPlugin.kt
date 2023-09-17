@@ -5,6 +5,7 @@ import com.blank.wallpaper.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 class AndroidTestConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -18,7 +19,12 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = libs.findVersion("targetSdk").get().toString().toInt()
             }
+            dependencies {
+                add("testImplementation", libs.findBundle("mockk").get())
+            }
         }
+
+
     }
 
 }

@@ -53,6 +53,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findBundle("paging").get())
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
+                add("testImplementation", libs.findBundle("mockk").get())
+                add("testImplementation", libs.findLibrary("arch.core.testing").get())
             }
         }
     }

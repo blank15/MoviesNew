@@ -28,6 +28,8 @@ glide = "4.14.2"
 gsonVer = "2.10.1"
 youtubePlayer = "12.1.0"
 jacoco = "0.8.7"
+mockk = "1.12.1"
+archCoreTest = "2.1.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -66,6 +68,11 @@ glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", versi
 
 youtube-player = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "youtubePlayer" }
 
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-JVM = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
+mockk-core = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTest" }
+
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
@@ -86,5 +93,10 @@ paging = [
     "android-paging-runtime",
     "android-paging-runtime-ktx",
     "android-paging-common-ktx"
+]
+mockk = [
+    "mockk-android",
+    "mockk-JVM",
+    "mockk-core"
 ]
 
