@@ -13,5 +13,17 @@
             android:name="idMovie"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_detailMovieFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.blank.movie.detailmovie.ui.review.ReviewFragment"
+        android:label="ReviewFragment">
+        <argument
+            android:name="idMovie"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

@@ -24,7 +24,7 @@ class MoviesPagingSourceHelper(
             val response = movieDataSource.getMovieList(pageIndex)
             when (response) {
                 is NetworkResponse.Success -> {
-                    val result = response.data.resultsMovie
+                    val result = response.data.results
                     val endOfPagination = result.isEmpty()
                     val prevKey = if (pageIndex == 1) null else pageIndex - 1
                     val nextKey = if (endOfPagination) null else pageIndex + 1

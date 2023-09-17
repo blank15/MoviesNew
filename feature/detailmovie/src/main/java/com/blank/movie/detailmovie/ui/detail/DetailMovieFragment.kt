@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.blank.movie.detailmovie.R
 import com.blank.movie.detailmovie.databinding.FragmentDetailMovieBinding
 import com.blank.movie.detailmovie.ui.adapter.RecyclerViewVideoAdapter
 import com.blank.movie.domain.model.DetailMovieModel
@@ -25,6 +27,7 @@ class DetailMovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val videoAdapter = RecyclerViewVideoAdapter()
+    private var idMovie = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -86,6 +89,7 @@ class DetailMovieFragment : Fragment() {
             textGenre.text = genre
             textScoreItem.text = voteAverage.toString()
             textSinopsisItem.text = overview
+            val urlBackDrop = BASE_URL_IMAGE + data.backdropPath
             context?.let {
                 Glide.with(it)
                     .load(BASE_URL_IMAGE + data.posterPath)
@@ -95,18 +99,23 @@ class DetailMovieFragment : Fragment() {
                     .into(imageItem)
 
                 Glide.with(it)
-                    .load(BASE_URL_IMAGE + data.backdropPath)
+                    .load(urlBackDrop)
                     .placeholder(ColorDrawable(Color.BLACK))
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(imageBackdrop)
             }
             videoAdapter.submitList(videosId)
+            val bundle = bundleOf(ID_MOVIE to idMovie, URL_BACKDROP to urlBackDrop)
+            buttonReview.setOnClickListener {
+                findNavController().navigate(R.id.reviewFragment, bundle)
+            }
         }
+
     }
 
     private fun initData() {
-        val idMovie = arguments?.getInt(ID_MOVIE) ?: 0
+        idMovie = arguments?.getInt(ID_MOVIE) ?: 0
         detailMovieViewModel.getDetailMovie(idMovie)
     }
 
@@ -117,6 +126,7 @@ class DetailMovieFragment : Fragment() {
 
     companion object {
         const val ID_MOVIE = "idMovie"
+        const val URL_BACKDROP = "URL_BACKDROP"
         private const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500/"
         private const val VIEWFLIPPER_INDEX_LOADING = 0
         private const val VIEWFLIPPER_INDEX_NORMAL = 1

@@ -146,12 +146,13 @@
                                 android:id="@+id/text_score_item"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/baseline_star_24"
                                 android:background="@drawable/rounded_background"
-                                android:layout_marginEnd="8dp"
                                 android:layout_marginTop="4dp"
                                 android:padding="8dp"
                                 app:layout_constraintTop_toBottomOf="@+id/text_score"
-                                app:layout_constraintEnd_toEndOf="parent" />
+                                app:layout_constraintEnd_toEndOf="@id/text_score"
+                                app:layout_constraintStart_toStartOf="@id/text_score" />
 
                             <View
                                 android:layout_width="0dp"
@@ -210,6 +211,19 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent" />
 
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:text="@string/show_review"
+                                android:gravity="center"
+                                android:id="@+id/button_review"
+                                android:textColor="@android:color/white"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/rounded_background"
+                                app:layout_constraintTop_toBottomOf="@+id/rv_video"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>

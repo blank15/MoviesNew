@@ -4,6 +4,7 @@ import com.blank.movie.data.MovieDataSource
 import com.blank.movie.data.model.ErrorResponse
 import com.blank.movie.data.model.MoviesResponse
 import com.blank.movie.data.model.NetworkResponse
+import com.blank.movie.data.model.ReviewResponse
 import com.blank.movie.data.model.YoutubeVideoResponse
 import com.blank.movie.data.model.detailmovie.DetailMovieResponse
 import javax.inject.Inject
@@ -22,4 +23,10 @@ class MovieDataSourceImpl @Inject constructor(
 
     override suspend fun getVideoData(idMovie: Int): NetworkResponse<YoutubeVideoResponse, ErrorResponse> =
         movieApi.getVideo(idMovie)
+
+    override suspend fun getReview(
+        idMovie: Int,
+        page: Int
+    ): NetworkResponse<ReviewResponse, ErrorResponse> =
+        movieApi.getReview(idMovie, page)
 }
