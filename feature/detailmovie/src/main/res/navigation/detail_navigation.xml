@@ -9,16 +9,9 @@
         android:name="com.blank.movie.detailmovie.ui.detail.DetailMovieFragment"
         android:label="DetailMovieFragment">
         <deepLink app:uri="android-app://com.blank.movie.detailmovie/detailMovieFragment/{idMovie}" />
-        <action
-            android:id="@+id/action_detailMovieFragment_to_reviewFragment"
-            app:destination="@id/reviewFragment" />
         <argument
             android:name="idMovie"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
-    <fragment
-        android:id="@+id/reviewFragment"
-        android:name="com.blank.movie.detailmovie.ui.review.ReviewFragment"
-        android:label="ReviewFragment" />
 </navigation>

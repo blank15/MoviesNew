@@ -8,13 +8,12 @@ import com.blank.movie.data.MovieDataSource
 import com.blank.movie.domain.model.DetailMovieModel
 import com.blank.movie.domain.model.DomainResource
 import com.blank.movie.domain.model.ResultMovieModel
-import com.blank.movie.domain.model.ReviewModel
-import com.blank.movie.domain.model.VideoModel
 import com.blank.movie.domain.repository.MovieRepository
 import com.blank.movie.helper.PagerProviderHelper
 import com.blank.movie.helper.dataSourceHandling
 import com.blank.movie.mapper.DetailMovieMapper
 import com.blank.movie.mapper.MovieMapper
+import com.blank.movie.mapper.YoutubeVideoMapper
 import com.blank.movie.paging.MoviesPagingSourceHelper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -50,12 +49,11 @@ class MovieRepositoryImpl @Inject constructor(
         )
     }
 
-    override fun getVideoData(idMovie: String): Flow<DomainResource<VideoModel>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getReview(idMovie: String, page: Int): Flow<DomainResource<ReviewModel>> {
-        TODO("Not yet implemented")
+    override fun getVideoData(idMovie: Int): Flow<DomainResource<List<String>>> {
+        return dataSourceHandling(
+            callApi = { movieDataSource.getVideoData(idMovie) },
+            mapper = YoutubeVideoMapper()
+        )
     }
 
     companion object {

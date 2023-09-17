@@ -26,6 +26,7 @@ navigation = "2.6.0"
 paging = "3.1.1"
 glide = "4.14.2"
 gsonVer = "2.10.1"
+youtubePlayer = "12.1.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -61,6 +62,8 @@ android-paging-common-ktx = { group = "androidx.paging", name = "paging-common-k
 
 glide-android = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+
+youtube-player = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "youtubePlayer" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

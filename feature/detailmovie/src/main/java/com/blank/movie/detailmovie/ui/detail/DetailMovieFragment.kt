@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.blank.movie.detailmovie.databinding.FragmentDetailMovieBinding
+import com.blank.movie.detailmovie.ui.adapter.RecyclerViewVideo
 import com.blank.movie.domain.model.DetailMovieModel
 import com.blank.movie.domain.model.DomainResource
 import com.bumptech.glide.Glide
@@ -22,6 +23,8 @@ class DetailMovieFragment : Fragment() {
     private val detailMovieViewModel: DetailMovieViewModel by viewModels()
     private var _binding: FragmentDetailMovieBinding? = null
     private val binding get() = _binding!!
+
+    private val videoAdapter = RecyclerViewVideo()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,9 +39,17 @@ class DetailMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initObserver()
-        binding.backButton.setOnClickListener {
-            this.findNavController().popBackStack()
+        initView()
+    }
+
+    private fun initView() {
+        binding.apply {
+            backButton.setOnClickListener {
+                this@DetailMovieFragment.findNavController().popBackStack()
+            }
+            rvVideo.adapter = videoAdapter
         }
+
     }
 
     private fun initObserver() {
@@ -90,13 +101,18 @@ class DetailMovieFragment : Fragment() {
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(imageBackdrop)
             }
-
+            videoAdapter.submitList(videosId)
         }
     }
 
     private fun initData() {
         val idMovie = arguments?.getInt(ID_MOVIE) ?: 0
         detailMovieViewModel.getDetailMovie(idMovie)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {

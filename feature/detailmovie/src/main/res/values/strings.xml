@@ -8,4 +8,5 @@
     <string name="review_is_empty">Belum ada Review Pada Movie ini</string>
     <string name="score">Vote Average</string>
     <string name="empty_data">Data Kosong</string>
+    <string name="video">Video</string>
 </resources>
