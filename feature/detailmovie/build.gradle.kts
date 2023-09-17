@@ -1,5 +1,6 @@
 plugins {
     id("movie.android.feature")
+    id("movie.android.library.jacoco")
     alias(libs.plugins.org.jetbrains.kotlin.android)
 }
 android {

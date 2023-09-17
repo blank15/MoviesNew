@@ -43,5 +43,13 @@ gradlePlugin {
             id = "movie.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
+        register("androidLibraryJacoco") {
+            id = "movie.android.library.jacoco"
+            implementationClass = "AndroidLibraryJacocoConventionPlugin"
+        }
+        register("androidApplicationJacoco") {
+            id = "movie.android.application.jacoco"
+            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+        }
     }
 }

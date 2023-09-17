@@ -1,4 +1,4 @@
 <resources>
-    <string name="score">Score</string>
+    <string name="score">Vote Average</string>
     <string name="refresh">Refresh</string>
 </resources>

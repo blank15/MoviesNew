@@ -9,7 +9,8 @@ import com.blank.movie.detailmovie.databinding.ItemVideoBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
-class RecyclerViewVideo : ListAdapter<String, RecyclerViewVideo.ViewHolderVideo>(COMPARATOR) {
+class RecyclerViewVideoAdapter :
+    ListAdapter<String, RecyclerViewVideoAdapter.ViewHolderVideo>(COMPARATOR) {
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<String>() {
             override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {

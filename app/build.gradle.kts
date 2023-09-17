@@ -2,6 +2,7 @@
 plugins {
     id("movie.android.application")
     id("movie.android.hilt")
+    id("movie.android.application.jacoco")
 }
 
 android {

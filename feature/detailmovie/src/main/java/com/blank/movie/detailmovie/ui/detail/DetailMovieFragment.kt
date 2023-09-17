@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.blank.movie.detailmovie.databinding.FragmentDetailMovieBinding
-import com.blank.movie.detailmovie.ui.adapter.RecyclerViewVideo
+import com.blank.movie.detailmovie.ui.adapter.RecyclerViewVideoAdapter
 import com.blank.movie.domain.model.DetailMovieModel
 import com.blank.movie.domain.model.DomainResource
 import com.bumptech.glide.Glide
@@ -24,7 +24,7 @@ class DetailMovieFragment : Fragment() {
     private var _binding: FragmentDetailMovieBinding? = null
     private val binding get() = _binding!!
 
-    private val videoAdapter = RecyclerViewVideo()
+    private val videoAdapter = RecyclerViewVideoAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
