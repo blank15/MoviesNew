@@ -72,6 +72,7 @@ mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "moc
 mockk-JVM = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
 mockk-core = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTest" }
+coroutine-testing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

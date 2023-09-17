@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.blank.movie.detailmovie"
     buildFeatures.dataBinding = true
+
 }
 
 dependencies {
