@@ -1,6 +1,5 @@
 package com.blank.movie.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.blank.movie.data.MovieDataSource
@@ -23,11 +22,9 @@ class MoviesPagingSourceHelper(
         val pageIndex = params.key ?: STARTING_INDEX
         return try {
             val response = movieDataSource.getMovieList(pageIndex)
-
-            Log.e("movie dat", "data list ${response}")
             when (response) {
                 is NetworkResponse.Success -> {
-                    val result = response.data.results ?: listOf()
+                    val result = response.data.resultsMovie
                     val endOfPagination = result.isEmpty()
                     val prevKey = if (pageIndex == 1) null else pageIndex - 1
                     val nextKey = if (endOfPagination) null else pageIndex + 1

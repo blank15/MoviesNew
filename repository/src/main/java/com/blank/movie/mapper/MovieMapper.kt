@@ -10,13 +10,13 @@ class MovieMapper @Inject constructor() : DomainMapper<ResultMovieResponse, Resu
         return with(dataModel) {
             ResultMovieModel(
                 id = id ?: 0,
-                originalName = original_title.orEmpty(),
+                originalName = originalName.orEmpty(),
                 overview = overview.orEmpty(),
                 popularity = popularity ?: 0.0,
-                posterPath = poster_path.orEmpty(),
+                posterPath = posterPath.orEmpty(),
                 backdropPath = backdropPath.orEmpty(),
-                releaseDate = release_date.orEmpty(),
-                title = title.orEmpty()
+                releaseDate = releaseDate.orEmpty(),
+                title = title.orEmpty(),
             )
         }
     }

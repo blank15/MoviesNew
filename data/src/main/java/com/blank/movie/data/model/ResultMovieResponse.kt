@@ -1,17 +1,26 @@
 package com.blank.movie.data.model
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
 
 @Serializable
 data class ResultMovieResponse(
+    @SerializedName("id")
     val id: Int? = null,
-    val original_title: String? = null,
+    @SerializedName("original_name")
+    val originalName: String?,
+    @SerializedName("overview")
     val overview: String? = null,
+    @SerializedName("popularity")
     val popularity: Double? = null,
-    val poster_path: String? = null,
+    @SerializedName("poster_path")
+    val posterPath: String? = null,
+    @SerializedName("backdrop_path")
     val backdropPath: String? = null,
-    val release_date: String? = null,
+    @SerializedName("release_date")
+    val releaseDate: String? = null,
+    @SerializedName("title")
     val title: String? = null
 
 )

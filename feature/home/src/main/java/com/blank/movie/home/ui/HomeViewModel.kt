@@ -7,7 +7,9 @@ import androidx.paging.cachedIn
 import com.blank.movie.domain.model.ResultMovieModel
 import com.blank.movie.domain.usecase.GetListMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,6 +19,8 @@ class HomeViewModel @Inject constructor(
 
 
     val moviesData: Flow<PagingData<ResultMovieModel>> =
-        getListMovieUseCase().cachedIn(viewModelScope)
+        getListMovieUseCase()
+            .cachedIn(viewModelScope)
+            .flowOn(Dispatchers.IO)
 
 }

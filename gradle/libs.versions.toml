@@ -25,6 +25,7 @@ org-jetbrains-kotlin-jvm = "1.9.0"
 navigation = "2.6.0"
 paging = "3.1.1"
 glide = "4.14.2"
+gsonVer = "2.10.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -49,7 +50,8 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVer" }
+gsonConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
@@ -73,7 +75,8 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 network = [
     "okhttp-logging",
     "retrofit-core",
-    "retrofit-kotlin-serialization"
+    "gson",
+    "gsonConverter"
 ]
 paging = [
     "android-paging-runtime",

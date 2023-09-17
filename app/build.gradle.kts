@@ -28,6 +28,7 @@ android {
 dependencies {
 
     implementation(project(":feature:home"))
+    implementation(project(":feature:detailmovie"))
     implementation(project(":data"))
     implementation(project(":repository"))
     implementation(project(":domain"))

@@ -1,10 +1,11 @@
 package com.blank.movie.data.model
 
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
-@Serializable
 data class ErrorResponse(
+    @SerialName("status_message")
     var statusMessage: String?,
+    @SerialName("status_code")
     var statusCode: Int? = null,
 )
 

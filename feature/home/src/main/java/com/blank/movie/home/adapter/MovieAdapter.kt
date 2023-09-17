@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 
-class MovieAdapter : PagingDataAdapter<
+class MovieAdapter(private val onItemClick: OnItemClick) : PagingDataAdapter<
         ResultMovieModel,
         MovieAdapter.MovieViewHolder>(COMPARATOR) {
 
@@ -44,14 +44,13 @@ class MovieAdapter : PagingDataAdapter<
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        getItem(position)?.let { holder.bindTo(it) }
+        getItem(position)?.let { holder.bindTo(it, onItemClick) }
     }
 
 
     class MovieViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindTo(data: ResultMovieModel) = with(binding) {
-
+        fun bindTo(data: ResultMovieModel, onItemClick: OnItemClick) = with(binding) {
 
             Glide.with(this.root)
                 .load(BASE_URL_IMAGE + data.posterPath)
@@ -64,6 +63,16 @@ class MovieAdapter : PagingDataAdapter<
 
             val date = SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(data.releaseDate)
             textDateRelease.text = SimpleDateFormat("MMM dd,yyyy", Locale.getDefault()).format(date)
+
+            root.setOnClickListener {
+                onItemClick.invoke(data.id)
+            }
         }
     }
+
+}
+
+
+fun interface OnItemClick {
+    fun invoke(id: Int)
 }

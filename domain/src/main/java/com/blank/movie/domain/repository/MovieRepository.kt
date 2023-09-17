@@ -1,6 +1,7 @@
 package com.blank.movie.domain.repository
 
 import androidx.paging.PagingData
+import com.blank.movie.domain.model.DetailMovieModel
 import com.blank.movie.domain.model.DomainResource
 import com.blank.movie.domain.model.ResultMovieModel
 import com.blank.movie.domain.model.ReviewModel
@@ -12,7 +13,7 @@ interface MovieRepository {
     fun getMovieList(
     ): Flow<PagingData<ResultMovieModel>>
 
-    fun getDetailMovie(idMovie: String): Flow<DomainResource<ResultMovieModel>>
+    fun getDetailMovie(idMovie: Int): Flow<DomainResource<DetailMovieModel>>
     fun getVideoData(idMovie: String): Flow<DomainResource<VideoModel>>
 
     fun getReview(

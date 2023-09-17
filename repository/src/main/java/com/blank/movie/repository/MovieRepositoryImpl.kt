@@ -5,12 +5,15 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.blank.movie.data.MovieDataSource
+import com.blank.movie.domain.model.DetailMovieModel
 import com.blank.movie.domain.model.DomainResource
 import com.blank.movie.domain.model.ResultMovieModel
 import com.blank.movie.domain.model.ReviewModel
 import com.blank.movie.domain.model.VideoModel
 import com.blank.movie.domain.repository.MovieRepository
 import com.blank.movie.helper.PagerProviderHelper
+import com.blank.movie.helper.dataSourceHandling
+import com.blank.movie.mapper.DetailMovieMapper
 import com.blank.movie.mapper.MovieMapper
 import com.blank.movie.paging.MoviesPagingSourceHelper
 import kotlinx.coroutines.flow.Flow
@@ -40,8 +43,11 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getDetailMovie(idMovie: String): Flow<DomainResource<ResultMovieModel>> {
-        TODO("Not yet implemented")
+    override fun getDetailMovie(idMovie: Int): Flow<DomainResource<DetailMovieModel>> {
+        return dataSourceHandling(
+            callApi = { movieDataSource.getDetailMovie(idMovie) },
+            mapper = DetailMovieMapper()
+        )
     }
 
     override fun getVideoData(idMovie: String): Flow<DomainResource<VideoModel>> {

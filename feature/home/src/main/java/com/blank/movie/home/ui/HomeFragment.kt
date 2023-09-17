@@ -1,13 +1,15 @@
 package com.blank.movie.home.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import com.blank.movie.home.adapter.MovieAdapter
 import com.blank.movie.home.adapter.PagingLoadStateAdapter
 import com.blank.movie.home.databinding.FragmentHomeBinding
@@ -20,7 +22,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
-    private var adapterMovie: MovieAdapter = MovieAdapter()
+    private lateinit var adapterMovie: MovieAdapter
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -40,6 +42,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
+        adapterMovie = MovieAdapter {
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("android-app://com.blank.movie.detailmovie/detailMovieFragment/$it".toUri())
+                .build()
+            findNavController().navigate(request)
+        }
         binding.rvMovie.adapter = adapterMovie.withLoadStateFooter(
             PagingLoadStateAdapter(retryCallback = { adapterMovie.retry() })
         )
@@ -49,7 +57,6 @@ class HomeFragment : Fragment() {
     private fun initObserver() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.moviesData.collectLatest {
-                Log.e("Data movie", "movie $it")
                 adapterMovie.submitData(it)
             }
         }

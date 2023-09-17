@@ -4,9 +4,9 @@ import com.blank.movie.data.MovieDataSource
 import com.blank.movie.data.model.ErrorResponse
 import com.blank.movie.data.model.MoviesResponse
 import com.blank.movie.data.model.NetworkResponse
-import com.blank.movie.data.model.ResultMovieResponse
 import com.blank.movie.data.model.ReviewResponse
 import com.blank.movie.data.model.VideoResponse
+import com.blank.movie.data.model.detailmovie.DetailMovieResponse
 import javax.inject.Inject
 
 class MovieDataSourceImpl @Inject constructor(
@@ -18,7 +18,7 @@ class MovieDataSourceImpl @Inject constructor(
         return movieApi.getListMovie(page)
     }
 
-    override suspend fun getDetailMovie(idMovie: String): NetworkResponse<ResultMovieResponse, ErrorResponse> =
+    override suspend fun getDetailMovie(idMovie: Int): NetworkResponse<DetailMovieResponse, ErrorResponse> =
         movieApi.getDetailMovie(idMovie)
 
     override suspend fun getVideoData(idMovie: String): NetworkResponse<VideoResponse, ErrorResponse> =
