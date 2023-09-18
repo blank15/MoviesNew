@@ -17,7 +17,7 @@ class HomeViewModel @Inject constructor(
 
 
     val moviesData: Flow<PagingData<ResultMovieModel>> =
-        getListMovieUseCase()
+        getListMovieUseCase.invoke()
             .cachedIn(viewModelScope)
 
 

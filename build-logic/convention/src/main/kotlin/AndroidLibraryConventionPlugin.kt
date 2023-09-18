@@ -55,6 +55,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 add("testImplementation", kotlin("test"))
                 add("testImplementation", libs.findBundle("mockk").get())
                 add("testImplementation", libs.findLibrary("arch.core.testing").get())
+
+                add("testImplementation", libs.findLibrary("arch.core.testing").get())
             }
         }
     }
